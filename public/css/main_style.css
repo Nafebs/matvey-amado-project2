@@ -1,0 +1,415 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1600px;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-form input,
+.filter-form select,
+.filter-form button,
+.reset-button {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 36px;
+}
+
+.filter-form input {
+    min-width: 300px;
+}
+
+.filter-form button,
+.reset-button {
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+}
+
+.reset-button {
+    background: #dc3545;
+    width: 120px;
+    text-decoration: none;
+    border: none;
+}
+
+.filter-form button:hover {
+    background: #0056b3;
+}
+
+.reset-button:hover {
+    background: #c82333;
+}
+
+#delete-button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #dc3545;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+#delete-button:hover {
+    background: #c82333;
+}
+
+#delete-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    background: #007bff;
+    color: white;
+    cursor: default;
+}
+
+th a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sort-icon {
+    font-size: 14px;
+    margin-left: 5px;
+    width: 12px;
+    display: inline-block;
+    text-align: center;
+}
+
+tr:hover {
+    background: #f0f0f0;
+    transition: background 0.3s;
+}
+
+.student-main-checkbox,
+.student-checkbox {
+    transform: scale(1.5);
+    margin: 0;
+    cursor: pointer;
+}
+
+.student-checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#add-student-btn,
+#assign-teacher-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#add-student-btn:hover,
+#assign-teacher-btn:hover {
+    background-color: #218838;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+}
+
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-content button {
+    margin-top: 10px;
+    background: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.modal-content button:hover {
+    background: #218838;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
+}
+
+/* Общие стили для input и select */
+select,
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: none;
+    border-radius: 0;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Кнопка "Выйти" */
+.button-logout {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    height: 35px;
+    transition: background 0.3s ease;
+}
+
+.button-logout:hover {
+    background-color: #c82333;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+p.user-info {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.stats-modal {
+    width: 500px;
+}
+
+/* Кнопка статистики */
+.stats-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    height: 35px;
+    transition: background 0.3s ease;
+}
+
+.stats-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Стили таблицы в модальном окне */
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.stats-table th,
+.stats-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.stats-table th {
+    background: #007bff;
+    color: white;
+}
+
+.stats-table tr:hover {
+    background: #f0f0f0;
+}
+
+/* Модальное окно */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 800px; /* Увеличена ширина */
+    text-align: center;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto; /* Добавлена прокрутка при большом количестве данных */
+}
+
+/* Для модального окна статистики */
+.stats-modal {
+    width: 800px; /* Увеличена ширина */
+    max-height: 80vh; /* Ограничение по высоте */
+    overflow-y: auto; /* Прокрутка по вертикали */
+}
+
+/* Стили для таблиц внутри модального окна */
+.stats-table td {
+    word-wrap: break-word;
+    max-width: 200px; /* Ограничение по ширине */
+}
+
+/* Для второй и третьей таблицы - 50/50 для двух столбцов */
+#second-grade-count th,
+#second-grade-count td,
+#teachers-stats th,
+#teachers-stats td {
+    width: 50%; /* Задаем 50% ширины для каждого столбца */
+}
+
+/* Для первой таблицы (младший ученик) - стандартная ширина столбцов */
+#youngest-student th,
+#youngest-student td {
+    width: auto; /* Стандартная ширина */
+}
+
+/* Заголовки секций модального окна */
+.modal-content h3 {
+    color: #007bff; /* Цвет заголовков (можно изменить на любой другой) */
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+    font-size: 18px; /* Размер шрифта */
+    font-weight: bold; /* Жирное начертание */
+}
