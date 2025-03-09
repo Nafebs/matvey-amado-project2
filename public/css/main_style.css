@@ -1,24 +1,47 @@
+/* Определяем переменные для часто используемых значений */
+:root {
+    --color-bg: #f4f4f4;
+    --color-white: #ffffff;
+    --color-border: #ccc;
+    --color-primary: #007bff;
+    --color-primary-hover: #0056b3;
+    --color-success: #28a745;
+    --color-success-hover: #218838;
+    --color-danger: #dc3545;
+    --color-danger-hover: #c82333;
+    --color-text: #333;
+    --btn-height: 36px;
+    --btn-padding: 8px 16px;
+    --btn-radius: 4px;
+    /* Переменные для оформления таблиц */
+    --table-border-color: #ccc;
+    --table-header-bg: #007bff; 
+    --table-header-text: #ffffff;
+    --table-row-hover-bg: #f0f0f0;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Основные стили страницы */
 body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: var(--color-bg);
     flex-direction: column;
     padding: 20px;
 }
 
 .container {
-    max-width: 1600px;
+    max-width: 1800px;
     width: 100%;
-    background: white;
+    background: var(--color-white);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -31,6 +54,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* Стили для форм и элементов ввода */
 .filter-form {
     display: flex;
     gap: 10px;
@@ -39,67 +63,70 @@ body {
 }
 
 .filter-form input,
-.filter-form select,
-.filter-form button,
-.reset-button {
+.filter-form select {
+    min-width: 300px;
     padding: 8px;
     font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    height: 36px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--btn-radius);
+    height: var(--btn-height);
+    background-color: var(--color-white);
 }
 
-.filter-form input {
-    min-width: 300px;
+select:focus,
+input:focus {
+    outline: none;
+    border-color: var(--color-primary);
 }
 
-.filter-form button,
-.reset-button {
-    background: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease;
+/* Общий базовый класс для кнопок */
+.btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 12px;
-}
-
-.reset-button {
-    background: #dc3545;
-    width: 120px;
-    text-decoration: none;
-    border: none;
-}
-
-.filter-form button:hover {
-    background: #0056b3;
-}
-
-.reset-button:hover {
-    background: #c82333;
-}
-
-#delete-button {
-    padding: 10px;
     font-size: 14px;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--btn-radius);
     cursor: pointer;
-    background: #dc3545;
-    color: white;
     transition: background 0.3s ease;
+    padding: 8px 16px;
+    height: var(--btn-height);
+    color: var(--color-white);
 }
 
-#delete-button:hover {
-    background: #c82333;
+/* Модификаторы кнопок */
+.btn-primary {
+    background: var(--color-primary);
+}
+.btn-primary:hover {
+    background: var(--color-primary-hover);
 }
 
-#delete-button:disabled {
-    background: #ccc;
+.btn-success {
+    background: var(--color-success);
+}
+.btn-success:hover {
+    background: var(--color-success-hover);
+}
+
+.btn-danger {
+    background: var(--color-danger);
+}
+.btn-danger:hover {
+    background: var(--color-danger-hover);
+}
+.btn-danger:disabled {
+    background: var(--color-border);
     cursor: not-allowed;
 }
 
+/* Дополнительное оформление для "сброса" */
+.reset-button {
+    width: 120px;
+    text-decoration: none;
+}
+
+/* Стили таблицы */
 .table-container {
     overflow-x: auto;
 }
@@ -111,20 +138,20 @@ table {
 }
 
 th, td {
-    border: 1px solid #ccc;
+    border: 1px solid var(--table-border-color);
     padding: 10px;
     text-align: left;
     white-space: nowrap;
 }
 
 th {
-    background: #007bff;
-    color: white;
+    background: var(--table-header-bg);
+    color: var(--table-header-text);
     cursor: default;
 }
 
 th a {
-    color: white;
+    color: var(--table-header-text);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -140,10 +167,11 @@ th a {
 }
 
 tr:hover {
-    background: #f0f0f0;
+    background: var(--table-row-hover-bg);
     transition: background 0.3s;
 }
 
+/* Стили для чекбоксов */
 .student-main-checkbox,
 .student-checkbox {
     transform: scale(1.5);
@@ -157,26 +185,10 @@ tr:hover {
     align-items: center;
 }
 
+/* Контейнер для кнопок в шапке */
 .buttons-container {
     display: flex;
     gap: 10px;
-    margin-bottom: 15px;
-}
-
-#add-student-btn,
-#assign-teacher-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-#add-student-btn:hover,
-#assign-teacher-btn:hover {
-    background-color: #218838;
 }
 
 /* Модальное окно */
@@ -198,12 +210,14 @@ tr:hover {
 }
 
 .modal-content {
-    background: white;
+    background: var(--color-white);
     padding: 20px;
     border-radius: 8px;
-    width: 400px;
+    width: 800px;
     text-align: center;
     position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .modal-content h2 {
@@ -220,26 +234,17 @@ tr:hover {
 .modal-content select {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--btn-radius);
     font-size: 14px;
 }
 
 .modal-content button {
     margin-top: 10px;
-    background: #28a745;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
     width: 100%;
 }
 
-.modal-content button:hover {
-    background: #218838;
-}
-
+/* Кнопка закрытия модального окна */
 .close {
     position: absolute;
     top: 10px;
@@ -247,36 +252,16 @@ tr:hover {
     font-size: 24px;
     cursor: pointer;
 }
-
 .close:hover {
     color: red;
 }
 
-/* Общие стили для input и select */
-select,
-input[type="text"],
-input[type="date"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: #fff;
-}
-
-select:focus,
-input:focus {
-    outline: none;
-    border-color: #007bff;
-}
-
+/* Стили для заголовков и пользовательской информации */
 h1 {
-    color: #333;
+    color: var(--color-text);
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    background: none;
-    border-radius: 0;
 }
 
 .header-buttons {
@@ -284,23 +269,6 @@ h1 {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-}
-
-/* Кнопка "Выйти" */
-.button-logout {
-    background-color: #dc3545;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    height: 35px;
-    transition: background 0.3s ease;
-}
-
-.button-logout:hover {
-    background-color: #c82333;
 }
 
 .header-container {
@@ -318,32 +286,17 @@ h1 {
 p.user-info {
     font-size: 20px;
     font-weight: bold;
-    color: #333;
+    color: var(--color-text);
     margin: 0;
 }
 
+/* Модальное окно статистики и таблицы */
 .stats-modal {
-    width: 500px;
+    width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
-/* Кнопка статистики */
-.stats-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    height: 35px;
-    transition: background 0.3s ease;
-}
-
-.stats-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Стили таблицы в модальном окне */
 .stats-table {
     width: 100%;
     border-collapse: collapse;
@@ -352,64 +305,38 @@ p.user-info {
 
 .stats-table th,
 .stats-table td {
-    border: 1px solid #ccc;
+    border: 1px solid var(--table-border-color);
     padding: 8px;
     text-align: left;
 }
 
 .stats-table th {
-    background: #007bff;
-    color: white;
+    background: var(--table-header-bg);
+    color: var(--table-header-text);
 }
 
 .stats-table tr:hover {
-    background: #f0f0f0;
+    background: var(--table-row-hover-bg);
 }
 
-/* Модальное окно */
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 800px; /* Увеличена ширина */
-    text-align: center;
-    position: relative;
-    max-height: 80vh;
-    overflow-y: auto; /* Добавлена прокрутка при большом количестве данных */
-}
-
-/* Для модального окна статистики */
-.stats-modal {
-    width: 800px; /* Увеличена ширина */
-    max-height: 80vh; /* Ограничение по высоте */
-    overflow-y: auto; /* Прокрутка по вертикали */
-}
-
-/* Стили для таблиц внутри модального окна */
-.stats-table td {
-    word-wrap: break-word;
-    max-width: 200px; /* Ограничение по ширине */
-}
-
-/* Для второй и третьей таблицы - 50/50 для двух столбцов */
+/* Настройка ширины столбцов таблиц */
 #second-grade-count th,
 #second-grade-count td,
 #teachers-stats th,
 #teachers-stats td {
-    width: 50%; /* Задаем 50% ширины для каждого столбца */
+    width: 50%;
 }
 
-/* Для первой таблицы (младший ученик) - стандартная ширина столбцов */
 #youngest-student th,
 #youngest-student td {
-    width: auto; /* Стандартная ширина */
+    width: auto;
 }
 
 /* Заголовки секций модального окна */
 .modal-content h3 {
-    color: #007bff; /* Цвет заголовков (можно изменить на любой другой) */
-    margin-top: 20px; /* Отступ сверху */
-    margin-bottom: 10px; /* Отступ снизу */
-    font-size: 18px; /* Размер шрифта */
-    font-weight: bold; /* Жирное начертание */
+    color: var(--table-header-bg);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }

@@ -23,15 +23,13 @@
                 <div class="buttons-container">
                     <form id="delete-form" method="POST" action="../actions/delete.php">
                         <input type="hidden" name="delete_ids" id="delete-ids">
-                        <button type="submit" id="delete-button" disabled>Удалить</button>
+                        <button type="submit" id="delete-button" class="btn btn-danger" disabled>Удалить</button>
                     </form>
-                    <button id="add-student-btn">Добавить ученика</button>
-                    <button id="assign-teacher-btn">Назначить учителя</button>
-
-                    <button id="stats-btn" class="stats-btn">Статистика</button>
-
+                    <button id="add-student-btn" class="btn btn-success">Добавить ученика</button>
+                    <button id="assign-teacher-btn" class="btn btn-success">Назначить учителя</button>
+                    <button id="stats-btn" class="btn btn-primary stats-btn">Статистика</button>
                     <form action="../actions/logout.php" method="POST">
-                        <button type="submit" class="button-logout">Выйти из системы</button>
+                        <button type="submit" class="btn btn-danger">Выйти из системы</button>
                     </form>
                 </div>
 
@@ -45,8 +43,8 @@
                             </option>
                         {/foreach}
                     </select>
-                    <button type="submit">Найти</button>
-                    <a href="index.php" class="reset-button">Сбросить</a>
+                    <button type="submit" class="btn btn-primary">Найти</button>
+                    <a href="index.php" class="btn btn-danger reset-button">Сбросить</a>
                 </form>
             </div>
         </div>
@@ -55,22 +53,50 @@
             <table>
                 <tr class="ignore-hover">
                     <th>
-                        <div class="student-checkbox-container" >
+                        <div class="student-checkbox-container">
                             <input type="checkbox" id="select-all" class="student-main-checkbox">
                         </div>
                     </th>
-                    <th><a href="?sort=id&order={$next_order}&search={$search}&class={$class_filter}">ID <span class="sort-icon">{if $sort == 'id'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span></a></th>
-                    <th><a href="?sort=second_name&order={$next_order}&search={$search}&class={$class_filter}">Фамилия <span class="sort-icon">{if $sort == 'second_name'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span></a></th>
-                    <th><a href="?sort=first_name&order={$next_order}&search={$search}&class={$class_filter}">Имя <span class="sort-icon">{if $sort == 'first_name'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span></a></th>
-                    <th><a href="?sort=patronymic&order={$next_order}&search={$search}&class={$class_filter}">Отчество <span class="sort-icon">{if $sort == 'patronymic'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span></a></th>
-                    <th><a href="?sort=birth_date&order={$next_order}&search={$search}&class={$class_filter}">Дата рождения <span class="sort-icon">{if $sort == 'birth_date'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span></a></th>
-                    <th><a href="?sort=class_name&order={$next_order}&search={$search}&class={$class_filter}">Класс <span class="sort-icon">{if $sort == 'class_name'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span></a></th>
-                    <th><a href="?sort=teacher_name&order={$next_order}&search={$search}&class={$class_filter}">Учитель <span class="sort-icon">{if $sort == 'teacher_name'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span></a></th>
+                    <th>
+                        <a href="?sort=id&order={$next_order}&search={$search}&class={$class_filter}">
+                            ID <span class="sort-icon">{if $sort == 'id'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=second_name&order={$next_order}&search={$search}&class={$class_filter}">
+                            Фамилия <span class="sort-icon">{if $sort == 'second_name'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=first_name&order={$next_order}&search={$search}&class={$class_filter}">
+                            Имя <span class="sort-icon">{if $sort == 'first_name'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=patronymic&order={$next_order}&search={$search}&class={$class_filter}">
+                            Отчество <span class="sort-icon">{if $sort == 'patronymic'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=birth_date&order={$next_order}&search={$search}&class={$class_filter}">
+                            Дата рождения <span class="sort-icon">{if $sort == 'birth_date'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=class_name&order={$next_order}&search={$search}&class={$class_filter}">
+                            Класс <span class="sort-icon">{if $sort == 'class_name'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=teacher_name&order={$next_order}&search={$search}&class={$class_filter}">
+                            Учитель <span class="sort-icon">{if $sort == 'teacher_name'}{if $order == 'ASC'}▲{else}▼{/if}{/if}</span>
+                        </a>
+                    </th>
                 </tr>
                 {foreach from=$students item=student}
                 <tr>
                     <td>
-                        <div class="student-checkbox-container" >
+                        <div class="student-checkbox-container">
                             <input type="checkbox" class="student-checkbox" value="{$student.id}">
                         </div>
                     </td>
@@ -112,7 +138,7 @@
                         {/foreach}
                     </select>
 
-                    <button type="submit">Добавить</button>
+                    <button type="submit" class="btn btn-success">Добавить</button>
                 </form>
             </div>
         </div>
@@ -139,7 +165,7 @@
                         {/foreach}
                     </select>
 
-                    <button type="submit">Назначить</button>
+                    <button type="submit" class="btn btn-success">Назначить</button>
                 </form>
             </div>
         </div>

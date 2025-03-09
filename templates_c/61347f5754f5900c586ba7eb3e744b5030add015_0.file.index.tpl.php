@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2025-03-03 12:54:11
+/* Smarty version 4.3.0, created on 2025-03-09 17:23:47
   from 'C:\xampp\htdocs\amado_project\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_67c598635b6dc4_17803691',
+  'unifunc' => 'content_67cdc093e18d29_94717065',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '61347f5754f5900c586ba7eb3e744b5030add015' => 
     array (
       0 => 'C:\\xampp\\htdocs\\amado_project\\templates\\index.tpl',
-      1 => 1741002849,
+      1 => 1741537424,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67c598635b6dc4_17803691 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67cdc093e18d29_94717065 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html>
 <head>
     <meta charset="utf-8">
@@ -59,15 +59,13 @@ function content_67c598635b6dc4_17803691 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="buttons-container">
                     <form id="delete-form" method="POST" action="../actions/delete.php">
                         <input type="hidden" name="delete_ids" id="delete-ids">
-                        <button type="submit" id="delete-button" disabled>Удалить</button>
+                        <button type="submit" id="delete-button" class="btn btn-danger" disabled>Удалить</button>
                     </form>
-                    <button id="add-student-btn">Добавить ученика</button>
-                    <button id="assign-teacher-btn">Назначить учителя</button>
-
-                    <button id="stats-btn" class="stats-btn">Статистика</button>
-
+                    <button id="add-student-btn" class="btn btn-success">Добавить ученика</button>
+                    <button id="assign-teacher-btn" class="btn btn-success">Назначить учителя</button>
+                    <button id="stats-btn" class="btn btn-primary stats-btn">Статистика</button>
                     <form action="../actions/logout.php" method="POST">
-                        <button type="submit" class="button-logout">Выйти из системы</button>
+                        <button type="submit" class="btn btn-danger">Выйти из системы</button>
                     </form>
                 </div>
 
@@ -91,8 +89,8 @@ $_smarty_tpl->tpl_vars['class']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </select>
-                    <button type="submit">Найти</button>
-                    <a href="index.php" class="reset-button">Сбросить</a>
+                    <button type="submit" class="btn btn-primary">Найти</button>
+                    <a href="index.php" class="btn btn-danger reset-button">Сбросить</a>
                 </form>
             </div>
         </div>
@@ -101,52 +99,80 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <table>
                 <tr class="ignore-hover">
                     <th>
-                        <div class="student-checkbox-container" >
+                        <div class="student-checkbox-container">
                             <input type="checkbox" id="select-all" class="student-main-checkbox">
                         </div>
                     </th>
-                    <th><a href="?sort=id&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
+                    <th>
+                        <a href="?sort=id&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
 &search=<?php echo $_smarty_tpl->tpl_vars['search']->value;?>
 &class=<?php echo $_smarty_tpl->tpl_vars['class_filter']->value;?>
-">ID <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'id') {
+">
+                            ID <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'id') {
 if ($_smarty_tpl->tpl_vars['order']->value == 'ASC') {?>▲<?php } else { ?>▼<?php }
-}?></span></a></th>
-                    <th><a href="?sort=second_name&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
+}?></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=second_name&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
 &search=<?php echo $_smarty_tpl->tpl_vars['search']->value;?>
 &class=<?php echo $_smarty_tpl->tpl_vars['class_filter']->value;?>
-">Фамилия <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'second_name') {
+">
+                            Фамилия <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'second_name') {
 if ($_smarty_tpl->tpl_vars['order']->value == 'ASC') {?>▲<?php } else { ?>▼<?php }
-}?></span></a></th>
-                    <th><a href="?sort=first_name&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
+}?></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=first_name&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
 &search=<?php echo $_smarty_tpl->tpl_vars['search']->value;?>
 &class=<?php echo $_smarty_tpl->tpl_vars['class_filter']->value;?>
-">Имя <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'first_name') {
+">
+                            Имя <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'first_name') {
 if ($_smarty_tpl->tpl_vars['order']->value == 'ASC') {?>▲<?php } else { ?>▼<?php }
-}?></span></a></th>
-                    <th><a href="?sort=patronymic&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
+}?></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=patronymic&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
 &search=<?php echo $_smarty_tpl->tpl_vars['search']->value;?>
 &class=<?php echo $_smarty_tpl->tpl_vars['class_filter']->value;?>
-">Отчество <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'patronymic') {
+">
+                            Отчество <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'patronymic') {
 if ($_smarty_tpl->tpl_vars['order']->value == 'ASC') {?>▲<?php } else { ?>▼<?php }
-}?></span></a></th>
-                    <th><a href="?sort=birth_date&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
+}?></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=birth_date&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
 &search=<?php echo $_smarty_tpl->tpl_vars['search']->value;?>
 &class=<?php echo $_smarty_tpl->tpl_vars['class_filter']->value;?>
-">Дата рождения <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'birth_date') {
+">
+                            Дата рождения <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'birth_date') {
 if ($_smarty_tpl->tpl_vars['order']->value == 'ASC') {?>▲<?php } else { ?>▼<?php }
-}?></span></a></th>
-                    <th><a href="?sort=class_name&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
+}?></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=class_name&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
 &search=<?php echo $_smarty_tpl->tpl_vars['search']->value;?>
 &class=<?php echo $_smarty_tpl->tpl_vars['class_filter']->value;?>
-">Класс <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'class_name') {
+">
+                            Класс <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'class_name') {
 if ($_smarty_tpl->tpl_vars['order']->value == 'ASC') {?>▲<?php } else { ?>▼<?php }
-}?></span></a></th>
-                    <th><a href="?sort=teacher_name&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
+}?></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sort=teacher_name&order=<?php echo $_smarty_tpl->tpl_vars['next_order']->value;?>
 &search=<?php echo $_smarty_tpl->tpl_vars['search']->value;?>
 &class=<?php echo $_smarty_tpl->tpl_vars['class_filter']->value;?>
-">Учитель <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'teacher_name') {
+">
+                            Учитель <span class="sort-icon"><?php if ($_smarty_tpl->tpl_vars['sort']->value == 'teacher_name') {
 if ($_smarty_tpl->tpl_vars['order']->value == 'ASC') {?>▲<?php } else { ?>▼<?php }
-}?></span></a></th>
+}?></span>
+                        </a>
+                    </th>
                 </tr>
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['students']->value, 'student');
@@ -156,7 +182,7 @@ $_smarty_tpl->tpl_vars['student']->do_else = false;
 ?>
                 <tr>
                     <td>
-                        <div class="student-checkbox-container" >
+                        <div class="student-checkbox-container">
                             <input type="checkbox" class="student-checkbox" value="<?php echo $_smarty_tpl->tpl_vars['student']->value['id'];?>
 ">
                         </div>
@@ -217,7 +243,7 @@ $_smarty_tpl->tpl_vars['class']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </select>
 
-                    <button type="submit">Добавить</button>
+                    <button type="submit" class="btn btn-success">Добавить</button>
                 </form>
             </div>
         </div>
@@ -262,7 +288,7 @@ $_smarty_tpl->tpl_vars['teacher']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </select>
 
-                    <button type="submit">Назначить</button>
+                    <button type="submit" class="btn btn-success">Назначить</button>
                 </form>
             </div>
         </div>
